@@ -27,7 +27,7 @@ public class Main {
         System.out.println("Testing DataSet: " + Size);
         System.out.println("BoDPercent: " + BoDPercent);
         System.out.println("SoDPercent: " + SoDPercent);
-        double executionTime = (endTime-startTime);
+        double executionTime = (endTime - startTime);
 
         System.out.println("Total execution time: " + executionTime + "ms");
 
@@ -42,63 +42,63 @@ public class Main {
         int num_u = (int) tmpu;
         int num_b = (int) tmpb;
         int num_s = (int) tmps;
-        int maxTaskChange = (int)tmpc;
-        System.out.println( "\nUser Added: " + num_u
+        int maxTaskChange = (int) tmpc;
+        System.out.println("\nUser Added: " + num_u
                 + "\nBoD Added: " + num_b
                 + "\nSoD Added: " + num_s
                 + "\nMax Task Change: " + maxTaskChange);
 
         boolean resil = false;
-        if(resil){
+        if (resil) {
             int[] u = RandGen.removeUsers(num_u, AC.fileData.num_tasks);
             TaskPair[] b = RandGen.taskPair(num_b, AC.fileData.num_tasks);
             TaskPair[] s = RandGen.taskPair(num_s, AC.fileData.num_tasks);
             Print.resilience_constraints(u, b, s);
 
-            AC.resilience_initialize(u,b,s);
+            AC.resilience_initialize(u, b, s);
             long startTime2 = System.currentTimeMillis();
             AC.resilience_search_method(maxTaskChange);
             long endTime2 = System.currentTimeMillis();
-            resilExecutionTime = endTime2-endTime;
+            resilExecutionTime = endTime2 - endTime;
             System.out.println("Total execution time: " + resilExecutionTime + "ms");
         }
         System.out.println("-------------------------");
 
         /***********************WRITE SOLUTION TO FILE******************************/
-        if(!resil){
-            try{
+        if (!resil) {
+            try {
                 String data = "\n---------------------------"
                         + "\nTesting DataSet: " + Size
                         + "\nBoDPercent: " + BoDPercent
                         + "\nSoDPercent: " + SoDPercent
                         + "\nTotal execution time: " + executionTime + "ms"
-                        +"\n---------------------------";
+                        + "\n---------------------------";
 
 
-                File file =new File(args[7]);
+                File file = new File(args[7]);
 
                 //if file doesnt exists, then create it
-                if(!file.exists()){
+                if (!file.exists()) {
                     file.createNewFile();
                 }
 
                 //true = append file
-                FileWriter fileWritter = new FileWriter(file.getName(),true);
+                FileWriter fileWritter = new FileWriter(file.getName(), true);
                 BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
                 bufferWritter.write(data);
                 bufferWritter.close();
 
                 System.out.println("Done");
 
-            }catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
+        } else {
 
             /***********************WRITE RESILIENCE SOLUTION TO FILE******************************/
-            try{
+            try {
                 String result = "";
-                if(AC.resilSuccess)
+                if (AC.resilSuccess)
                     result += "SUCCESS";
                 else
                     result += "FAILED";
@@ -113,25 +113,25 @@ public class Main {
                         + "\nMax Task Change: " + maxTaskChange
                         + "\nTotal execution time: " + resilExecutionTime + "ms"
                         + "\n" + result
-                        +"\n---------------------------";
+                        + "\n---------------------------";
 
 
-                File file =new File(args[7]);
+                File file = new File(args[7]);
 
                 //if file doesnt exists, then create it
-                if(!file.exists()){
+                if (!file.exists()) {
                     file.createNewFile();
                 }
 
                 //true = append file
-                FileWriter fileWritter = new FileWriter(file.getName(),true);
+                FileWriter fileWritter = new FileWriter(file.getName(), true);
                 BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
                 bufferWritter.write(data);
                 bufferWritter.close();
 
                 System.out.println("Done");
 
-            }catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
