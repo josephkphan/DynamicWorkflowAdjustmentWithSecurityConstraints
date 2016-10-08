@@ -1,4 +1,4 @@
-package com.jp.solver;
+package com.jp.solver.helper;
 public class Copy {
 	/***********************Copy Functions****************************/
 	//Description: returns a copy of the given integer array

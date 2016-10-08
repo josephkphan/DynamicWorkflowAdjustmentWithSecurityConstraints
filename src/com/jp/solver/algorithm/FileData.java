@@ -1,4 +1,6 @@
-package com.jp.solver;
+package com.jp.solver.algorithm;
+
+import com.jp.solver.helper.Print;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -190,19 +192,19 @@ public class FileData {
 		read_separation_constraints_file(fileName + "/sc.txt");
 		read_user_capability_file(fileName + "/uc.txt");
 		read_average_orders_file(fileName + "/avg.txt");
-		
-		//DEBUGGING - prints out all files read
-//		
-//		Print.ArrayList2D(user_authorizations, "User Authorizations: ");
-//		//Print.ArrayList2D(user_capability,"User Capabilities: ");
-//		Print.ArrayList2D(binding_constraints,"Binding Constraints: ");
-//		Print.ArrayList2D(separation_constraints, "Separation Constraints: ");
-//		Print.ArrayList(avg_orders, "Average Orders: ");
-//		
-//		System.out.println("Number of Users: " + num_users);
-//		System.out.println("Number of Tasks: "+ num_tasks);	
-//		
-		
+		//printAll
+
+	}
+
+	private void printAll(){
+		Print.ArrayList2D(user_authorizations, "User Authorizations: ");
+		Print.ArrayList2D(user_capability,"User Capabilities: ");
+		Print.ArrayList2D(binding_constraints,"Binding Constraints: ");
+		Print.ArrayList2D(separation_constraints, "Separation Constraints: ");
+		Print.ArrayList(avg_orders, "Average Orders: ");
+		System.out.println("Number of Users: " + num_users);
+		System.out.println("Number of Tasks: "+ num_tasks);
+
 	}
 	
 	

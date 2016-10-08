@@ -1,4 +1,9 @@
-package com.jp.solver;
+package com.jp.solver.main;
+
+import com.jp.solver.helper.Print;
+import com.jp.solver.helper.RandGen;
+import com.jp.solver.algorithm.Solution;
+import com.jp.solver.dataStructures.TaskPair;
 
 import java.io.BufferedWriter;
 import java.io.File;

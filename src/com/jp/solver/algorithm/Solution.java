@@ -4,7 +4,11 @@
  * File Description: Algorithm to find a possible feasible solution to assign users to tasks
  * given multiple constraints
  */
-package com.jp.solver;
+package com.jp.solver.algorithm;
+
+import com.jp.solver.dataStructures.TaskPair;
+import com.jp.solver.dataStructures.UserPair;
+import com.jp.solver.helper.Copy;
 
 import java.util.*;
 

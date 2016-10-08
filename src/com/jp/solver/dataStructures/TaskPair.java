@@ -1,4 +1,4 @@
-package com.jp.solver;
+package com.jp.solver.dataStructures;
 
 public class TaskPair {
     int task1;

@@ -1,4 +1,7 @@
-package com.jp.solver;
+package com.jp.solver.helper;
+
+import com.jp.solver.dataStructures.TaskPair;
+import com.jp.solver.dataStructures.UserPair;
 
 import java.util.*;
 

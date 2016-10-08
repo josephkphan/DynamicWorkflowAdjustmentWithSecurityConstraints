@@ -1,4 +1,4 @@
-package com.jp.solver;
+package com.jp.solver.dataStructures;
 
 public class UserPair implements Comparable<UserPair> {
     int user;

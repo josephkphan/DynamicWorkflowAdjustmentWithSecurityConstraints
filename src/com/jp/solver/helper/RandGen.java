@@ -1,4 +1,6 @@
-package com.jp.solver;
+package com.jp.solver.helper;
+
+import com.jp.solver.dataStructures.TaskPair;
 
 import java.util.HashSet;
 import java.util.Random;
