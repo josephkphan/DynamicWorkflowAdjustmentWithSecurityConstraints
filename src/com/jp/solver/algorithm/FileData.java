@@ -185,13 +185,13 @@ public class FileData {
 		num_users = user_authorizations.size();		
 	}
 	
-	public void read_files(String fileName){
-		System.out.println("Reading From: " + fileName); 
-		read_authorization_file(fileName + "/ua.txt");
-		read_binding_constraints_file(fileName + "/bc.txt");
-		read_separation_constraints_file(fileName + "/sc.txt");
-		read_user_capability_file(fileName + "/uc.txt");
-		read_average_orders_file(fileName + "/avg.txt");
+	public void read_files(String path, String avg, String ua, String uc, String bc, String sc ){
+		System.out.println("Reading From: " + path);
+		read_authorization_file(path + ua + ".txt");
+		read_binding_constraints_file(path + bc + ".txt");
+		read_separation_constraints_file(path + sc + ".txt");
+		read_user_capability_file(path + uc +".txt");
+		read_average_orders_file(path + avg +".txt");
 		//printAll
 
 	}

@@ -15,35 +15,62 @@ public class Main {
     public static void main(String[] args) {
         Solution AC = new Solution();
 
+        String outputFile = "output.txt";
+
+        int numUsers,numTasks,bc,sc,ua,uc;
+        numUsers = 100;
+        numTasks = 2 * numUsers;
+        bc = 10;
+        sc = 10;
+        ua = 10;
+        uc = 10;
         //*****************SOLVING**********************//
-        String Size = args[0];
-        String BoDPercent = args[1];
-        String SoDPercent = args[2];
-        String TestSet = "/home/jphan/IdeaProjects/DynamicWorkflowAdjustmentWithSecu\n" +
-                "rityConstraints/src/com/jp/resources"
-                + Size + "/" + BoDPercent + "-" + SoDPercent + "/";
-        AC.fileData.read_files(TestSet);
+        String sizeFolder = numUsers+ "x" +numTasks;
+        String bcFile = "java_bc_" + bc;
+        String scFile = "java_sc_" + sc;
+        String uaFile = "java_ua_" + ua;
+        String ucFile = "java_uc_" + uc;
+        String avgFile = "java_avg_10";
+        String path = "/home/jphan/IdeaProjects/DynamicWorkflowAdjustmentWithSecurityConstraints/resources/" + sizeFolder + "/";
+
+        //RESIL
+//        double tmpu = Integer.parseInt(args[3]) * .01 * AC.fileData.num_tasks;
+//        double tmpb = Integer.parseInt(args[4]) * .01 * AC.fileData.num_tasks;
+//        double tmps = Integer.parseInt(args[5]) * .01 * AC.fileData.num_tasks;
+//        double tmpc = Integer.parseInt(args[6]) * .01 * AC.fileData.num_tasks;
+        //todo put that back later
+        double tmpu = 0;
+        double tmpb = 0;
+        double tmps = 0;
+        double tmpc = 0;
+
+
+        AC.fileData.read_files(path, avgFile, uaFile, ucFile, bcFile, scFile);
         AC.initialize();
         long startTime = System.currentTimeMillis();
         AC.search_method();
         long endTime = System.currentTimeMillis();
 
         System.out.println("-------------------------");
-        System.out.println("Testing DataSet: " + Size);
-        System.out.println("BoDPercent: " + BoDPercent);
-        System.out.println("SoDPercent: " + SoDPercent);
+        System.out.println("path = " + path);
+        System.out.println("sizeFolder = " + sizeFolder);
+        System.out.println("avgFile = " + avgFile);
+        System.out.println("uaFile = " + uaFile);
+        System.out.println("ucFile = " + ucFile);
+        System.out.println("bcFile = " + bcFile);
+        System.out.println("scFile = " + scFile);
         double executionTime = (endTime - startTime);
 
         System.out.println("Total execution time: " + executionTime + "ms");
 
         System.out.println("-------------------------------------------------");
         System.out.println("-------------------------------------------------");
+
+
         //*****************RESILIENCE**********************//
+
         double resilExecutionTime = 0;
-        double tmpu = Integer.parseInt(args[3]) * .01 * AC.fileData.num_tasks;
-        double tmpb = Integer.parseInt(args[4]) * .01 * AC.fileData.num_tasks;
-        double tmps = Integer.parseInt(args[5]) * .01 * AC.fileData.num_tasks;
-        double tmpc = Integer.parseInt(args[6]) * .01 * AC.fileData.num_tasks;
+
         int num_u = (int) tmpu;
         int num_b = (int) tmpb;
         int num_s = (int) tmps;
@@ -52,6 +79,7 @@ public class Main {
                 + "\nBoD Added: " + num_b
                 + "\nSoD Added: " + num_s
                 + "\nMax Task Change: " + maxTaskChange);
+
 
         boolean resil = false;
         if (resil) {
@@ -73,14 +101,16 @@ public class Main {
         if (!resil) {
             try {
                 String data = "\n---------------------------"
-                        + "\nTesting DataSet: " + Size
-                        + "\nBoDPercent: " + BoDPercent
-                        + "\nSoDPercent: " + SoDPercent
+                        + "\nTesting DataSet: " + sizeFolder
+                        + "\nBoDPercent: " + bcFile
+                        + "\nSoDPercent: " + scFile
+                        + "\nUAPercent: " + uaFile
+                        + "\nUCPercent: " + ucFile
                         + "\nTotal execution time: " + executionTime + "ms"
                         + "\n---------------------------";
 
 
-                File file = new File(args[7]);
+                File file = new File(outputFile);
 
                 //if file doesnt exists, then create it
                 if (!file.exists()) {
@@ -108,9 +138,11 @@ public class Main {
                 else
                     result += "FAILED";
                 String data = "\n---------------------------"
-                        + "\nTesting DataSet: " + Size
-                        + "\nBoDPercent: " + BoDPercent
-                        + "\nSoDPercent: " + SoDPercent
+                        + "\nTesting DataSet: " + sizeFolder
+                        + "\nBoDPercent: " + bcFile
+                        + "\nSoDPercent: " + scFile
+                        + "\nUAPercent: " + uaFile
+                        + "\nUCPercent: " + ucFile
                         + "\n---RESILENCE CHECK---"
                         + "\nUser Added: " + num_u
                         + "\nBoD Added: " + num_b
@@ -121,7 +153,7 @@ public class Main {
                         + "\n---------------------------";
 
 
-                File file = new File(args[7]);
+                File file = new File(outputFile);
 
                 //if file doesnt exists, then create it
                 if (!file.exists()) {
