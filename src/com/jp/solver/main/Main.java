@@ -18,8 +18,8 @@ public class Main {
         String outputFile = "output.txt";
 
         int numUsers,numTasks,bc,sc,ua,uc;
-        numUsers = 100;
-        numTasks = 2 * numUsers;
+        numUsers = 50;
+        numTasks = 450;
         bc = 10;
         sc = 10;
         ua = 10;
@@ -31,7 +31,7 @@ public class Main {
         String uaFile = "java_ua_" + ua;
         String ucFile = "java_uc_" + uc;
         String avgFile = "java_avg_10";
-        String path = "/home/jphan/IdeaProjects/DynamicWorkflowAdjustmentWithSecurityConstraints/resources/" + sizeFolder + "/";
+        String path = "/home/jphan/IdeaProjects/DynamicWorkflowAdjustmentWithSecurityConstraints/resources/ratio/" + sizeFolder + "/";
 
         //RESIL
 //        double tmpu = Integer.parseInt(args[3]) * .01 * AC.fileData.num_tasks;
@@ -51,7 +51,7 @@ public class Main {
         AC.search_method();
         long endTime = System.currentTimeMillis();
 
-        System.out.println("-------------------------");
+        /*System.out.println("-------------------------");
         System.out.println("path = " + path);
         System.out.println("sizeFolder = " + sizeFolder);
         System.out.println("avgFile = " + avgFile);
@@ -59,12 +59,13 @@ public class Main {
         System.out.println("ucFile = " + ucFile);
         System.out.println("bcFile = " + bcFile);
         System.out.println("scFile = " + scFile);
+        */
         double executionTime = (endTime - startTime);
 
         System.out.println("Total execution time: " + executionTime + "ms");
 
-        System.out.println("-------------------------------------------------");
-        System.out.println("-------------------------------------------------");
+        //System.out.println("-------------------------------------------------");
+        //System.out.println("-------------------------------------------------");
 
 
         //*****************RESILIENCE**********************//
@@ -75,11 +76,11 @@ public class Main {
         int num_b = (int) tmpb;
         int num_s = (int) tmps;
         int maxTaskChange = (int) tmpc;
-        System.out.println("\nUser Added: " + num_u
+        /*System.out.println("\nUser Added: " + num_u
                 + "\nBoD Added: " + num_b
                 + "\nSoD Added: " + num_s
                 + "\nMax Task Change: " + maxTaskChange);
-
+        */
 
         boolean resil = false;
         if (resil) {

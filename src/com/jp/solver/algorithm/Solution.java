@@ -9,6 +9,7 @@ package com.jp.solver.algorithm;
 import com.jp.solver.dataStructures.TaskPair;
 import com.jp.solver.dataStructures.UserPair;
 import com.jp.solver.helper.Copy;
+import com.jp.solver.helper.Print;
 
 import java.util.*;
 
@@ -124,9 +125,10 @@ public class Solution {
                         if (check_completed(cur_index))
                             break;
                         //found a solution
-                        //print_array(new_sol,"current assignments:");
+                       // Print.array(new_sol,"current assignments:");
                         //print_darray(cur_users_load,"current users load:");
                         //print_authorized(cur_authorized);
+                       // System.out.println("SUCCESS");
                         //System.out.println("---------------------------------------");
                     }
                 }
