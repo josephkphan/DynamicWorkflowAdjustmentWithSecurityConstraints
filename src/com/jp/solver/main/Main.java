@@ -18,8 +18,8 @@ public class Main {
         String outputFile = "output.txt";
 
         int numUsers,numTasks,bc,sc,ua,uc;
-        numUsers = 50;
-        numTasks = 450;
+        numUsers = 100;
+        numTasks = 200;
         bc = 10;
         sc = 10;
         ua = 10;
@@ -31,18 +31,7 @@ public class Main {
         String uaFile = "java_ua_" + ua;
         String ucFile = "java_uc_" + uc;
         String avgFile = "java_avg_10";
-        String path = "/home/jphan/IdeaProjects/DynamicWorkflowAdjustmentWithSecurityConstraints/resources/ratio/" + sizeFolder + "/";
-
-        //RESIL
-//        double tmpu = Integer.parseInt(args[3]) * .01 * AC.fileData.num_tasks;
-//        double tmpb = Integer.parseInt(args[4]) * .01 * AC.fileData.num_tasks;
-//        double tmps = Integer.parseInt(args[5]) * .01 * AC.fileData.num_tasks;
-//        double tmpc = Integer.parseInt(args[6]) * .01 * AC.fileData.num_tasks;
-        //todo put that back later
-        double tmpu = 0;
-        double tmpb = 0;
-        double tmps = 0;
-        double tmpc = 0;
+        String path = "/home/jphan/IdeaProjects/DynamicWorkflowAdjustmentWithSecurityConstraints/resources/" + sizeFolder + "/";
 
 
         AC.fileData.read_files(path, avgFile, uaFile, ucFile, bcFile, scFile);
@@ -51,42 +40,21 @@ public class Main {
         AC.search_method();
         long endTime = System.currentTimeMillis();
 
-        /*System.out.println("-------------------------");
-        System.out.println("path = " + path);
-        System.out.println("sizeFolder = " + sizeFolder);
-        System.out.println("avgFile = " + avgFile);
-        System.out.println("uaFile = " + uaFile);
-        System.out.println("ucFile = " + ucFile);
-        System.out.println("bcFile = " + bcFile);
-        System.out.println("scFile = " + scFile);
-        */
         double executionTime = (endTime - startTime);
 
         System.out.println("Total execution time: " + executionTime + "ms");
-
-        //System.out.println("-------------------------------------------------");
-        //System.out.println("-------------------------------------------------");
 
 
         //*****************RESILIENCE**********************//
 
         double resilExecutionTime = 0;
 
-        int num_u = (int) tmpu;
-        int num_b = (int) tmpb;
-        int num_s = (int) tmps;
-        int maxTaskChange = (int) tmpc;
-        /*System.out.println("\nUser Added: " + num_u
-                + "\nBoD Added: " + num_b
-                + "\nSoD Added: " + num_s
-                + "\nMax Task Change: " + maxTaskChange);
-        */
-
-        boolean resil = false;
+        boolean resil = true;
         if (resil) {
-            int[] u = RandGen.removeUsers(num_u, AC.fileData.num_tasks);
-            TaskPair[] b = RandGen.taskPair(num_b, AC.fileData.num_tasks);
-            TaskPair[] s = RandGen.taskPair(num_s, AC.fileData.num_tasks);
+            int[] u = {};
+            TaskPair[] b = { };
+            TaskPair[] s = { };
+            int maxTaskChange = 20;
             Print.resilience_constraints(u, b, s);
 
             AC.resilience_initialize(u, b, s);
@@ -139,16 +107,8 @@ public class Main {
                 else
                     result += "FAILED";
                 String data = "\n---------------------------"
-                        + "\nTesting DataSet: " + sizeFolder
-                        + "\nBoDPercent: " + bcFile
-                        + "\nSoDPercent: " + scFile
-                        + "\nUAPercent: " + uaFile
-                        + "\nUCPercent: " + ucFile
+
                         + "\n---RESILENCE CHECK---"
-                        + "\nUser Added: " + num_u
-                        + "\nBoD Added: " + num_b
-                        + "\nSoD Added: " + num_s
-                        + "\nMax Task Change: " + maxTaskChange
                         + "\nTotal execution time: " + resilExecutionTime + "ms"
                         + "\n" + result
                         + "\n---------------------------";

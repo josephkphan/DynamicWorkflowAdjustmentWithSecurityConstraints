@@ -401,10 +401,10 @@ public class Solution {
             ///System.out.println("------------------------\nFilling task: "+next_task);
             success = false;
             while (cur_authorized.get(next_task).size() != 0) {
-//				System.out.println("tasks_to_change: " + tasks_to_change);
-//				System.out.println("task_history: " + task_history);
+				System.out.println("tasks_to_change: " + tasks_to_change);
+				System.out.println("task_history: " + task_history);
                 possible_user = cur_authorized.get(next_task).get(0).get_user();
-                //System.out.println("Next User: " + possible_user);
+                System.out.println("Next User: " + possible_user);
                 //print_authorized(cur_authorized);
                 //Print.queue(tasks_to_change);
                 //Print.task_history(task_history);
