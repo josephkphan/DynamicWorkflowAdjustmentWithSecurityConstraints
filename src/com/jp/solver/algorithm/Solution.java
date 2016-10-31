@@ -218,7 +218,7 @@ public class Solution {
     /********************************Used to Check Resilience ***********************************/
 
     //Description: Applies additional parameters to test resilience
-    public void resilience_initialize(int[] u, TaskPair[] b, TaskPair[] s) {
+    public void resilience_initialize(int[] u, TaskPair[] b, TaskPair[] s, TaskPair[]a) {
         resilSuccess = false;
         int[] cur_sol = Copy.array(solution.peek());    //TODO: don't you have to remove from all stack history?
         Set<Integer> index_to_clear = new HashSet<Integer>();
@@ -230,6 +230,7 @@ public class Solution {
             solution.pop();
         }
 
+
         for (int i = 0; i < u.length; i++) {        //clear out any task with the indicated users
             fileData.user_authorizations.get(u[i]).clear();
             for (int j = 0; j < fileData.num_tasks; j++) {
@@ -237,6 +238,16 @@ public class Solution {
                     index_to_clear.add(j);
             }
         }
+
+        //todo remove user from list
+        for (int i=0; i<a.length; i++){
+            System.out.println("User = " + a[i].get_task1() + " Remove task " + a[i].get_task2());
+            System.out.println("before: "+  fileData.user_authorizations.get(a[i].get_task1()).contains(a[i].get_task2()) );
+            fileData.user_authorizations.get(a[i].get_task1()).remove((Object)a[i].get_task2());
+            System.out.println("after: "+  fileData.user_authorizations.get(a[i].get_task1()).contains(a[i].get_task2()) );
+            index_to_clear.add(a[i].get_task2());
+        }
+
 
         resilience_add_binding_constraints(cur_user_load, cur_sol, b, index_to_clear);
         resilience_add_separation_constraints(cur_user_load, cur_sol, s, index_to_clear);
@@ -257,7 +268,7 @@ public class Solution {
         users_load.push(cur_user_load);
         solution.push(cur_sol);
         num_same.push(0);
-        //Print.solution(solution);
+        Print.solution(solution);
         //search_method();					//performs search algorithm using existing history
         //Print.authorized(resil_authorized);
 

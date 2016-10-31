@@ -54,10 +54,13 @@ public class Main {
             int[] u = {};
             TaskPair[] b = { };
             TaskPair[] s = { };
+            TaskPair[] a = { new TaskPair(15,199),new TaskPair(1,186), new TaskPair(15,94),
+                    new TaskPair(10,143), new TaskPair(13,104), new TaskPair(19,168),
+                    new TaskPair(3,70), new TaskPair(4,8), new TaskPair(0, 3), new TaskPair(14,158)};
             int maxTaskChange = 20;
             Print.resilience_constraints(u, b, s);
 
-            AC.resilience_initialize(u, b, s);
+            AC.resilience_initialize(u, b, s, a);
             long startTime2 = System.currentTimeMillis();
             AC.resilience_search_method(maxTaskChange);
             long endTime2 = System.currentTimeMillis();
