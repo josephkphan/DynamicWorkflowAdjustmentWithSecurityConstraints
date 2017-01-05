@@ -1,5 +1,7 @@
 # DynamicWorkflowAdjustmentWithSecurityConstraints
 
+Worked with Dr. Haibing Lu from Santa Clara University
+
 ### Overview
 This Research project aims to create a management system program that takes in many real life variables such as binding constraints, separation constraints, capability, user load, and authorization constraints. It also tests the resilience of this program
 This program will take in these variables and determine whether a feasible solution of filling ever job with users is possible. 
